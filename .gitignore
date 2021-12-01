@@ -1,0 +1,30 @@
+.DS_Store
+
+# Eclipse
+.metadata
+.settings/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+out/
+
+# VisualStudioCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Java
+*.class
+*.log
+
+# Maven
+target/

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<project name="rkn2019" default="jar">
+    <path id="build.classpath">
+      <fileset dir="lib">
+        <include name="**/*.jar"/>
+      </fileset>
+    </path>
+    <target name="clean" description="remove intermediate files">
+        <delete dir="target"/>
+    </target>
+    <target name="compile" description="compile the Java source code to class files">
+        <mkdir dir="target"/>
+        <javac includeantruntime="false" srcdir="src/main/java" destdir="target">
+        <classpath refid="build.classpath"/>
+        </javac>
+    </target>
+    <target name="jar" depends="compile" description="create a Jar file for the application">
+        <jar destfile="target/${ant.project.name}.jar">
+            <fileset dir="target" includes="**/*.class"/>
+            <zipfileset src="lib/bcprov-debug-jdk15on-160.jar" excludes="**/*.RSA,**/*.SF,**/*.DSA"/>
+            <zipfileset src="lib/commons-cli-1.4.jar"/>
+            <zipfileset src="lib/jsoup-1.11.3.jar"/>
+            <manifest>
+                <attribute name="Main-Class" value="${ant.project.name}.Proxy"/>
+            </manifest>
+        </jar>
+    </target>
+</project>
